@@ -1,0 +1,8 @@
+swarm:
+  datasources:
+    data-sources:
+      InventoryDS:
+        driver-name: postgresql
+        connection-url: jdbc:postgresql://postgresql/inventorydb
+        user-name: user1
+        password: 123456
