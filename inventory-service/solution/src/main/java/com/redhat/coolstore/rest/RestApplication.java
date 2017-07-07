@@ -9,12 +9,6 @@ import java.util.Set;
 @ApplicationPath("/api")
 public class RestApplication extends Application {
 
-    @Override
-    public Set<Class<?>> getClasses() {
-        Set<Class<?>> resources = new HashSet();
-
-        resources.add(AvailabilityEndpoint.class);
-        return resources;
-    }
+    
 
 }
