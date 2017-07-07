@@ -25,9 +25,6 @@ public class AvailabilityEndpoint implements Serializable {
 	@Path("{itemId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Inventory getAvailability(@PathParam("itemId") String itemId) {
-		System.out.println("Calling the inventory service");
-		if(inventoryService == null)
-			System.out.println("It is null");
 		return inventoryService.getInventory(itemId);
 	}
 

@@ -18,11 +18,10 @@ public class InventoryService {
 	private EntityManager em;
 
 	public InventoryService() {
-		
+		System.out.println("C'tor Inventory Service");
 	}
 	
 	public Inventory getInventory(String itemId) {
-		System.out.println("I am in inventory Service and going to call model");
 		Inventory inventory = em.find(Inventory.class,itemId);
 		return inventory;
 	}

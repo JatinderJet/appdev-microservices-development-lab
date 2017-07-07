@@ -4,7 +4,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
-/*import io.swagger.annotations.Api;*/
+
 
 @ApplicationPath("/api")
 public class RestApplication extends Application {
@@ -14,9 +14,6 @@ public class RestApplication extends Application {
         Set<Class<?>> resources = new HashSet();
 
         resources.add(AvailabilityEndpoint.class);
-        //resources.add(io.swagger.jaxrs.listing.ApiListingResource.class);
-        //resources.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-
         return resources;
     }
 
