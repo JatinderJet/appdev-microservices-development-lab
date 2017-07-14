@@ -1,50 +1,54 @@
 package com.redhat.coolstore.rest;
 
-import static org.fest.assertions.Assertions.assertThat;
+import java.net.URL;
 
-import org.jboss.arquillian.container.test.api.RunAsClient;
-import org.jboss.arquillian.drone.api.annotation.Drone;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.test.api.ArquillianResource;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-
 import com.redhat.coolstore.InventoryServiceBaseTest;
+
 
 @RunWith(Arquillian.class)
 public class HealthCheckResourceTest extends InventoryServiceBaseTest{
-	@Drone
-	WebDriver browser;
+
+	@ArquillianResource
+	private URL deploymentURL;
 	
-	@Test
-	@RunAsClient
-	public void testReadiness() throws Exception {
-		browser.navigate().to("http://localhost:8080/api/health/readiness");
-		System.out.println(browser.getPageSource());
-		assertThat(browser.getPageSource()).contains("UP");
-	}	
+/*	private static final String URL =  "http://localhost:8080/api/health/ping";
 	
+	Client client = ClientBuilder.newBuilder().build();
+
+
+    WebTarget target;
+
+    @Before
+    public void before(){
+        target = client.target(deploymentURL+"/api/health/ping");
+    }*/
+
+
 	@Test
-	@RunAsClient
-	public void testLiveness() throws Exception {
-		browser.navigate().to("http://localhost:8080/api/health/liveness");
-		System.out.println(browser.getPageSource());
-		assertThat(browser.getPageSource()).contains("UP");
+	public void testHealth() throws Exception {
+
+		Client client = ClientBuilder.newBuilder().build();
+		WebTarget target;
+		// Given
+		target = client.target(deploymentURL+ "api/health/ping");
+		//Test
+		Response response = target.request().get();
+		System.out.println(response.readEntity(String.class));
+		//Verify
+		Assert.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+
 	}
 	
-	//@Test
-	//@RunAsClient
-	public void testReadinessDown() throws Exception {
-		browser.navigate().to("http://localhost:8080/api/health/readiness");
-		System.out.println(browser.getPageSource());
-		assertThat(browser.getPageSource()).contains("UP");
-	}	
-	
-	//@Test
-	//@RunAsClient
-	public void testLivenessDown() throws Exception {
-		browser.navigate().to("http://localhost:8080/api/health/liveness");
-		System.out.println(browser.getPageSource());
-		assertThat(browser.getPageSource()).contains("down");
-	}
+
 }
