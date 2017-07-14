@@ -12,7 +12,6 @@ public class InventoryService {
 	private EntityManager em;
 
 	public InventoryService() {
-		System.out.println("C'tor Inventory Service");
 	}
 	
 	public Inventory getInventory(String itemId) {

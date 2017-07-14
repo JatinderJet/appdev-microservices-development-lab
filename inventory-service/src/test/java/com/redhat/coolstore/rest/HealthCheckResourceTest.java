@@ -21,32 +21,21 @@ public class HealthCheckResourceTest extends InventoryServiceBaseTest{
 
 	@ArquillianResource
 	private URL deploymentURL;
-	
-/*	private static final String URL =  "http://localhost:8080/api/health/ping";
-	
-	Client client = ClientBuilder.newBuilder().build();
-
-
-    WebTarget target;
-
-    @Before
-    public void before(){
-        target = client.target(deploymentURL+"/api/health/ping");
-    }*/
-
 
 	@Test
 	public void testHealth() throws Exception {
 
-		Client client = ClientBuilder.newBuilder().build();
-		WebTarget target;
+		// To be implemented
+		// using ClientBuilder API create client
+		// Set the WebTarget to the resource URL i.e. 'api/health/ping'
+		// Replace below Response type variable to extract the 'GET' endpoint output
+		// Verify the Response Status 
+		
 		// Given
-		target = client.target(deploymentURL+ "api/health/ping");
+
 		//Test
-		Response response = target.request().get();
-		System.out.println(response.readEntity(String.class));
+
 		//Verify
-		Assert.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
 
 	}
 	
