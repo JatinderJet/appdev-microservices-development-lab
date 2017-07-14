@@ -14,7 +14,7 @@ spec:
               mountPath: /app/config
           livenessProbe:
             httpGet:
-              path: /api/health/liveness
+              path: /api/health/ping
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 60
@@ -24,7 +24,7 @@ spec:
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /api/health/readiness
+              path: /api/health/ping
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 10
