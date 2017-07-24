@@ -1,6 +1,7 @@
 package com.redhat.coolstore.rest;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,7 +18,8 @@ public class HealthCheckResource implements Serializable {
 	@Path("/ping")
 	@Health
 	public HealthStatus checkHealth() {
-		return HealthStatus.named("pong").up();
+		return HealthStatus.named("pong").up()
+				.withAttribute("date", new Date().toString());
 	}
-
 }
+

@@ -7,10 +7,10 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
-import org.junit.Assert;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.redhat.coolstore.InventoryServiceBaseTest;
@@ -23,6 +23,7 @@ public class HealthCheckResourceTest extends InventoryServiceBaseTest{
 	private URL deploymentURL;
 
 	@Test
+	@RunAsClient
 	public void testHealth() throws Exception {
 
 		// To be implemented

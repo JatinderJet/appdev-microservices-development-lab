@@ -1,5 +1,6 @@
 package com.redhat.coolstore.rest;
 
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.Assert;
@@ -24,6 +25,7 @@ public class AvailabilityEndPointTest extends InventoryServiceBaseTest{
 	private URL deploymentURL;
 
 	@Test
+	@RunAsClient
 	public void testResource()
 	{
 		// To be implemented

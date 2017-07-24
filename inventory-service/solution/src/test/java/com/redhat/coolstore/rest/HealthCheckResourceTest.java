@@ -7,6 +7,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.junit.Assert;
@@ -22,20 +23,9 @@ public class HealthCheckResourceTest extends InventoryServiceBaseTest{
 	@ArquillianResource
 	private URL deploymentURL;
 	
-/*	private static final String URL =  "http://localhost:8080/api/health/ping";
-	
-	Client client = ClientBuilder.newBuilder().build();
-
-
-    WebTarget target;
-
-    @Before
-    public void before(){
-        target = client.target(deploymentURL+"/api/health/ping");
-    }*/
-
 
 	@Test
+	@RunAsClient
 	public void testHealth() throws Exception {
 
 		Client client = ClientBuilder.newBuilder().build();

@@ -20,6 +20,6 @@ public class HealthCheckResource implements Serializable {
 	// Return Type HealthStatus
 	// Enable the 'monitor' fraction using @Health annotation
 	// Function has logic to always return UP status
-	
+	// Check solution to return date 	
 
 }
