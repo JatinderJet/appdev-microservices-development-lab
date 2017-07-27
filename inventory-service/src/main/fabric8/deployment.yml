@@ -37,5 +37,5 @@ spec:
           configMap:
             name: app-config
             items:
-            - key: "project-defaults.yml"
+            - key: "project-swagger.yml"
               path: "project-defaults.yml"

@@ -4,7 +4,6 @@ import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 
 import com.redhat.coolstore.InventoryServiceBaseTest;
@@ -27,19 +26,17 @@ public class AvailabilityEndPointTest extends InventoryServiceBaseTest{
 	@Test
 	@RunAsClient
 	public void testResource()
-	{
-		// To be implemented
-		// using ClientBuilder API create client
-		// Set the WebTarget to the resource URL
-		// Replace below Response type variable to extract the 'GET' endpoint output
-		// Verify the Response Status 
-
+	{	
+		Client client = ClientBuilder.newBuilder().build();
+		WebTarget target;
 		// Given
 		String itemId = "444436";
-
+		target = client.target(deploymentURL+ "api/availability/"+ itemId);
 		//Test
-		
+		Response response = target.request().get();
+		System.out.println(response.readEntity(String.class));
 		//Verify
+		Assert.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
 	}
 
 

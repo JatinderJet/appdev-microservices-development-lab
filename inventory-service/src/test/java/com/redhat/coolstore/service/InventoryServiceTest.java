@@ -12,8 +12,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-//To be implemented
-// Add annotation to integrate arquillian lifecycle
+
+@RunWith(Arquillian.class)
 public class InventoryServiceTest extends InventoryServiceBaseTest {
 
 
@@ -22,13 +22,8 @@ public class InventoryServiceTest extends InventoryServiceBaseTest {
 
 	@Test
 	public void testGetInventory() throws Exception {
-		// To be implemented 
-		// Assert the injected inventoryService object is not null
-		// Assert for the given itemId 444436 quantity returned is 230
-		
-		// Given 
-		
-		// Verify
+		assertThat(inventoryService, is(notNullValue()));
+		assertThat(inventoryService.getInventory("444436").getQuantity(), is(230));
 	}
 
 }

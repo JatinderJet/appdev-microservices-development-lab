@@ -14,9 +14,8 @@ public class InventoryService {
 	public InventoryService() {
 	}
 	
-	//To be implemented 
-	// Define a function getInventory
-	// Uses EntityManager find method to query DB on primary key
-	// returns Inventory Entity
-	
+	public Inventory getInventory(String itemId) {
+		Inventory inventory = em.find(Inventory.class,itemId);
+		return inventory;
+	}
 }

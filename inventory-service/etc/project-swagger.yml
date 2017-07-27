@@ -1,0 +1,15 @@
+swarm:
+  datasources:
+    data-sources:
+      InventoryDS:
+        driver-name: postgresql
+        connection-url: jdbc:postgresql://postgresql/inventorydb
+        user-name: user1
+        password: 123456
+  deployment:
+    inventory-service.war:
+      swagger:
+        packages:
+           - com.redhat.coolstore.service
+           - com.redhat.coolstore.rest
+           - com.redhat.coolstore.model
